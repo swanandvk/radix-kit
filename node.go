@@ -1,11 +1,3 @@
-// Package radix implements a generic radix tree (also known as a compact prefix
-// tree or patricia trie). A radix tree stores strings efficiently by sharing
-// common prefixes, making it ideal for tasks like routing tables, autocomplete
-// systems, and IP lookups.
-//
-// This implementation uses Go generics so that any value type can be associated
-// with the stored keys. Edges within each node are kept sorted by label byte,
-// enabling O(log n) child lookups via binary search.
 package radix
 
 import "sort"
@@ -81,21 +73,17 @@ func (n *node[V]) delEdge(label byte) {
 	n.edges = append(n.edges[:idx], n.edges[idx+1:]...)
 }
 
-// Tree is the main structure for a generic radix tree. It maps string keys to
-// values of type V. The zero value is not usable; create instances with [New].
-type Tree[V any] struct {
-	root *node[V]
-	size int
-}
-
-// New creates and returns an empty radix tree.
-func New[V any]() *Tree[V] {
-	return &Tree[V]{
-		root: &node[V]{},
+// longestCommonPrefix returns the length of the longest common prefix shared
+// by a and b.
+func longestCommonPrefix(a, b string) int {
+	max := len(a)
+	if len(b) < max {
+		max = len(b)
 	}
-}
-
-// Len returns the number of keys stored in the tree.
-func (t *Tree[V]) Len() int {
-	return t.size
+	for i := 0; i < max; i++ {
+		if a[i] != b[i] {
+			return i
+		}
+	}
+	return max
 }

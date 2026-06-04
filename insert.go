@@ -1,20 +1,5 @@
 package radix
 
-// longestCommonPrefix returns the length of the longest common prefix shared
-// by a and b.
-func longestCommonPrefix(a, b string) int {
-	max := len(a)
-	if len(b) < max {
-		max = len(b)
-	}
-	for i := 0; i < max; i++ {
-		if a[i] != b[i] {
-			return i
-		}
-	}
-	return max
-}
-
 // Insert adds or updates a key-value pair in the tree.
 //
 // If the key already existed, Insert returns the previous value and true.
