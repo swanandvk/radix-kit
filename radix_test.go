@@ -89,8 +89,8 @@ func TestInsert_SplitsNodesCorrectly_WhenKeysSharePrefixes(t *testing.T) {
 		{"team", "v2", true},
 		{"toast", "v3", true},
 		{"to", "v4", true},
-		{"te", "", false},     // shared prefix but not a stored key
-		{"t", "", false},      // partial match
+		{"te", "", false},      // shared prefix but not a stored key
+		{"t", "", false},       // partial match
 		{"toaster", "", false}, // extends beyond any stored key
 	}
 
