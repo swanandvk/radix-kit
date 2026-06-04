@@ -1,4 +1,5 @@
 # radix-kit
+[![CI](https://github.com/swanandvk/radix-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/swanandvk/radix-kit/actions/workflows/ci.yml)
 
 A high-performance, memory-efficient **Radix Tree** (compact prefix tree) library for Go, built with **Generics**.
 
